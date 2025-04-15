@@ -1,0 +1,38 @@
+Protocol:
+byte 1: 0 - 255, is the size of the package.
+byte 2 - 257, is the package.
+
+for example the package "AF 04 05 1A" is transmited with:
+
+size of package
+vv
+04 AF 0A 05 1A
+   ^^^^^^^^^^^
+   package.
+
+program IO:
+
+ex: 
+<< 0x45 \\ data sended
+>> 0x01 \\ first byte (package size)
+>> 0x45 \\ segoncd byte (package content)
+
+Commands:
+0x00 to 0x7F is get commands.
+0x80 to 0xFF it set commands.
+
+the MSB bit 1 define set command, the MSB bit 0 define get command.
+
+get commands:
+
+the get commands can return values that overflows a byte, then some commands can be "low and high byte" or "byte 1, 2, 3 and 4".
+
+00 - get fan RPM.
+First Byte: lowByte (0(lsb)-7)
+Second Byte: highByte (8-15(msb))
+
+set commands:
+
+if MSB bit is 1, it means that is a set command, and the others 7 bits is a data to set.
+
+you can set the fan PWM from 0 (min) to 127 (max)
