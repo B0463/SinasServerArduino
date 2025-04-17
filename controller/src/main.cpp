@@ -86,6 +86,9 @@ int configTTY(struct termios *tty, int arduinoStream) {
     tty->c_cflag &= ~CSIZE;
     tty->c_cflag |= CS8;
     tty->c_cflag |= CREAD | CLOCAL;
+    tty->c_cflag &= ~HUPCL;
+    tty->c_lflag &= ~(ICANON | ECHO | ECHOE | ECHONL | ISIG);
+    tty->c_iflag &= ~(IXON | IXOFF | IXANY | IGNBRK | BRKINT | PARMRK | ISTRIP | INLCR | IGNCR | ICRNL);
 
     if(tcsetattr(arduinoStream, TCSANOW, tty) != 0) return -1;
 
