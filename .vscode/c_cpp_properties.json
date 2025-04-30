@@ -3,7 +3,7 @@
     "configurations": [
         {
             "name": "Arduino",
-            "compilerPath": "/home/b_0463/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/bin/avr-g++",
+            "compilerPath": "/usr/bin/gcc",
             "compilerArgs": [
                 "-w",
                 "-std=gnu++11",
@@ -16,6 +16,8 @@
             ],
             "intelliSenseMode": "gcc-x64",
             "includePath": [
+                "/usr/include",
+                "/usr/bin",
                 "/home/b_0463/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
                 "/home/b_0463/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/eightanaloginputs",
                 "/home/b_0463/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/lib/gcc/avr/7.3.0/include",
